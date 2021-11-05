@@ -1,23 +1,25 @@
 version: '3'
 services:
-  mssql-server:
-    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
-    environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "iWadTqCC,!Aw"
-      MSSQL_PID: Express
-      TZ: America/Sao_Paulo
-    ports:
-      - "1433:1433"
-    volumes:
-      - ./sql:/var/opt/mssql/data
-  # targetapi:
-    # build: .
-    # environment:
-      # DbServer: "mssql-server"
-      # DbPort: "1433"
-      # DbUser: "SA"
-      # Password: "pass"
-      # Database: "targetapidb"
-    # ports: 
-      # - "8090:80"
+    database:
+      container_name: pg_container_apimae
+      image: postgres
+      restart: always
+      networks:
+        - default      
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD: root
+        POSTGRES_DB: teste
+      ports:
+        - "5432:5432"
+    pgadmin:
+      container_name: pgadmin4_api_mae
+      image: dpage/pgadmin4
+      networks:
+        - default      
+      restart: always
+      environment:
+        PGADMIN_DEFAULT_EMAIL: root@root.com
+        PGADMIN_DEFAULT_PASSWORD: root
+      ports:
+        - "5050:80"
