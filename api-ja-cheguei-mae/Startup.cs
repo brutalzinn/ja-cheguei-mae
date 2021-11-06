@@ -52,7 +52,8 @@ using System.Reflection;
             //    options.SuppressModelStateInvalidFilter = true;
             //});
             services.AddHttpContextAccessor();
-        services.AddDbContext<DatabaseContexto>();
+            services.AddDbContext<DatabaseContexto>(options => options.UseNpgsql(
+                Configuration.GetConnectionString("DefaultConnetion")));
 
         //testando injeção de dependência com aspcore 
 
