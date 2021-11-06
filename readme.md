@@ -2,4 +2,4 @@
 
 ### Fluxo - Em construção
 
-![alt text](fluxochegueimae.jpeg "Title")
+![alt text](fluxochegueimae.png "Title")

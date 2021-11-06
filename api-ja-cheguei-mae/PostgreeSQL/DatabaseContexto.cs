@@ -30,7 +30,7 @@ namespace api_ja_cheguei_mae.PostgreeSQL
         public string Nome { get; set; }
         public bool Status { get; set; }
         public UsuarioModel Usuario_Id { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
     }
     public class MensagemModel
     {
