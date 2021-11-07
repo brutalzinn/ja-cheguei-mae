@@ -51,7 +51,6 @@ namespace api_ja_cheguei_mae.Services.JWTService
             catch (TokenExpiredException)
             {
                 throw new GenericException(System.Net.HttpStatusCode.Unauthorized, "Token expirou.");
-
             }
             catch (SignatureVerificationException)
             {
@@ -62,7 +61,6 @@ namespace api_ja_cheguei_mae.Services.JWTService
                 throw new GenericException(System.Net.HttpStatusCode.Unauthorized, "O token deve consistir em 3 partes delimitadas por pontos");
 
             }
-
         }
 
      

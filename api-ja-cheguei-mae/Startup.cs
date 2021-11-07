@@ -56,7 +56,6 @@ public class Startup
             Configuration.GetConnectionString("DefaultConnetion")));
             services.AddSingleton<IMensagemService, MensagemService>();
             services.AddSingleton<IJWTService, JWTService>();
-
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddControllers();
 

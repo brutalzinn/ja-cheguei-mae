@@ -32,12 +32,9 @@ namespace api_ja_cheguei_mae.Middlewares
         public async Task Invoke(HttpContext context)
 		{
 			context.Response.ContentType = "application/json";
-	
-
 			var ContextAttribute = context.GetEndpoint()?.Metadata?.OfType<RequireAuth>().FirstOrDefault();
 			if(ContextAttribute != null)
             {
-				//context.Request.Headers.ToList().ForEach((v)=> Debug.WriteLine($"{v.Key}-{v.Value}"));
 				bool hasKey = context.Request.Headers.Keys.Contains("Authorization");
 				if (!hasKey)
 				{
