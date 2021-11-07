@@ -5,6 +5,7 @@ using api_ja_cheguei_mae.Request;
 using api_ja_cheguei_mae.Response;
 using api_ja_cheguei_mae.Services;
 using api_ja_cheguei_mae.Services.JWTService;
+using api_ja_cheguei_mae.Services.LoginService;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -15,20 +16,22 @@ namespace api_ja_cheguei_mae.Controllers
     [Produces("application/json")]
     public class UsuarioController : Controller
     {
-        private readonly IMensagemService _mensagemService;
+        private readonly IUsuarioService _usuarioService;
         private readonly IJWTService _jwtService;
         private readonly DatabaseContexto _contexto;
-        public UsuarioController(IMensagemService mensagemService, IJWTService jwtService, DatabaseContexto contexto)
+
+        public UsuarioController(IUsuarioService usuarioService, IJWTService jwtService, DatabaseContexto contexto)
         {
-            _mensagemService = mensagemService;
+            _usuarioService = usuarioService;
             _jwtService = jwtService;
             _contexto = contexto;
         }
+
         [RequireAuth]
         [HttpGet("teste")]
         public IActionResult Teste()
         {
-            return Ok(_jwtService.Email);
+            return Ok(_usuarioService.PegarPerfilLogado());
         }
         [HttpPost]
         public IActionResult Login(LoginRequest body)

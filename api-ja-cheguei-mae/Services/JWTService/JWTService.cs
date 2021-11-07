@@ -13,6 +13,7 @@ namespace api_ja_cheguei_mae.Services.JWTService
     {
         private string _token { get; set; }
         private string _email { get; set; }
+
         private int _id { get; set; }
         public string Token { get => _token; set => _token = value; }
         public int Id { get => _id; set => _id = value; }
@@ -24,7 +25,7 @@ namespace api_ja_cheguei_mae.Services.JWTService
         {
             var payload = new Dictionary<string, object>
             {
-                { "UserId", (int)usuario.id },
+                { "UserId", usuario.id },
                 { "UserEmail", usuario.email }
             };
             IJwtAlgorithm algorithm = new HMACSHA256Algorithm(); // symmetric
@@ -33,7 +34,6 @@ namespace api_ja_cheguei_mae.Services.JWTService
             IJwtEncoder encoder = new JwtEncoder(algorithm, serializer, urlEncoder);
             return encoder.Encode(payload, secret);
         }
-
         public void ValidarJWT(string token)
         {
             try
@@ -66,9 +66,6 @@ namespace api_ja_cheguei_mae.Services.JWTService
 
         }
 
-        public void PegarPayload(string token)
-        {
-            throw new System.NotImplementedException();
-        }
+     
     }
 }
