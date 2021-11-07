@@ -1,4 +1,5 @@
 ﻿using api_ja_cheguei_mae.Atributttes;
+using api_ja_cheguei_mae.Exceptions;
 using api_ja_cheguei_mae.PostgreeSQL;
 using api_ja_cheguei_mae.Request;
 using api_ja_cheguei_mae.Response;
@@ -33,6 +34,10 @@ namespace api_ja_cheguei_mae.Controllers
         public IActionResult Login(LoginRequest body)
         {
             var usuario = _contexto.usuario.Where((v) => v.email == body.email && v.senha == body.senha).FirstOrDefault();
+            if (usuario == null)
+            {
+                throw new GenericException(System.Net.HttpStatusCode.Unauthorized, "Email ou senha errados.");
+            }
             var response = new LoginResponse();
             response.Token = _jwtService.GerarToken(usuario);
             response.Status = true;

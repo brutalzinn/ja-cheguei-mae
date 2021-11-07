@@ -1,4 +1,5 @@
-﻿using api_ja_cheguei_mae.PostgreeSQL;
+﻿using api_ja_cheguei_mae.Exceptions;
+using api_ja_cheguei_mae.PostgreeSQL;
 using JWT;
 using JWT.Algorithms;
 using JWT.Exceptions;
@@ -34,7 +35,9 @@ namespace api_ja_cheguei_mae.Services.JWTService
         }
 
         public void ValidarJWT(string token)
-        {         
+        {
+            try
+            {
                 _token = token;
                 IJsonSerializer serializer = new JsonNetSerializer();
                 IDateTimeProvider provider = new UtcDateTimeProvider();
@@ -45,6 +48,22 @@ namespace api_ja_cheguei_mae.Services.JWTService
                 var payload = decoder.DecodeToObject<IDictionary<string, object>>(_token, secret, verify: true);
                 _id = Convert.ToInt32(payload["UserId"]);
                 _email = (string)payload["UserEmail"];
+            }
+            catch (TokenExpiredException)
+            {
+                throw new GenericException(System.Net.HttpStatusCode.Unauthorized, "Token expirou.");
+
+            }
+            catch (SignatureVerificationException)
+            {
+                throw new GenericException(System.Net.HttpStatusCode.Unauthorized, "Token tem uma assinatura ínválida");
+            }
+            catch (InvalidTokenPartsException)
+            {
+                throw new GenericException(System.Net.HttpStatusCode.Unauthorized, "O token deve consistir em 3 partes delimitadas por pontos");
+
+            }
+
         }
 
         public void PegarPayload(string token)
