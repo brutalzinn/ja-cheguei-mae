@@ -22,7 +22,7 @@ namespace api_ja_cheguei_mae.Controllers
         [HttpGet("/listarmensagem")]
         public IActionResult ListarMensagens()
         {
-            return Ok(_contexto.Usuario.ToList());
+            return Ok(_contexto.usuario.ToList());
         }
         [HttpGet("/mensagem")]
 
