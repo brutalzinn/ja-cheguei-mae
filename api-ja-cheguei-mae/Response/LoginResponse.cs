@@ -2,11 +2,8 @@
 {
     public class LoginResponse
     {
-        public LoginResponse(bool status)
-        {
-            Status = status;
-        }
-        public bool Status { get; set; }
-        public string Token { get; set; } = "TESTE";
+
+        public bool Status { get; set; } = false;
+        public string Token { get; set; }
     }
 }

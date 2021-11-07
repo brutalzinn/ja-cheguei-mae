@@ -46,9 +46,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "JWT": {
               "target": "Package",
-              "version": "[5.0.11, )"
+              "version": "[8.4.2, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

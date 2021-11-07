@@ -2,6 +2,8 @@
 using api_ja_cheguei_mae.Middlewares;
 using api_ja_cheguei_mae.PostgreeSQL;
 using api_ja_cheguei_mae.Services;
+using api_ja_cheguei_mae.Services.JWTService;
+using api_target_desafio.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -51,6 +53,7 @@ public class Startup
             services.AddDbContext<DatabaseContexto>(options => options.UseNpgsql(
             Configuration.GetConnectionString("DefaultConnetion")));
             services.AddSingleton<IMensagemService, MensagemService>();
+            services.AddSingleton<IJWTService, JWTService>();
             services.AddControllers();
 
     }
@@ -65,7 +68,7 @@ public class Startup
             }
         //app.Map("/user", UserMiddleware);
 
-
+            app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseRouting();
             app.UseMiddleware<AuthMiddleware>();
             app.UseAuthorization();
