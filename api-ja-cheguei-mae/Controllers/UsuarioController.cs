@@ -1,6 +1,5 @@
 ﻿using api_ja_cheguei_mae.Atributttes;
 using api_ja_cheguei_mae.Exceptions;
-using api_ja_cheguei_mae.PostgreeSQL;
 using api_ja_cheguei_mae.Request;
 using api_ja_cheguei_mae.Response;
 using api_ja_cheguei_mae.Services;
@@ -18,9 +17,9 @@ namespace api_ja_cheguei_mae.Controllers
     {
         private readonly IUsuarioService _usuarioService;
         private readonly IJWTService _jwtService;
-        private readonly DatabaseContexto _contexto;
+        private readonly MyDbContext _contexto;
 
-        public UsuarioController(IUsuarioService usuarioService, IJWTService jwtService, DatabaseContexto contexto)
+        public UsuarioController(IUsuarioService usuarioService, IJWTService jwtService, MyDbContext contexto)
         {
             _usuarioService = usuarioService;
             _jwtService = jwtService;
@@ -36,7 +35,7 @@ namespace api_ja_cheguei_mae.Controllers
         [HttpPost]
         public IActionResult Login(LoginRequest body)
         {
-            var usuario = _contexto.usuario.Where((v) => v.email == body.email && v.senha == body.senha).FirstOrDefault();
+            var usuario = _contexto.Usuarios.Where((v) => v.Email == body.email && v.Senha == body.senha).FirstOrDefault();
             if (usuario == null)
             {
                 throw new GenericException(System.Net.HttpStatusCode.Unauthorized, "Email ou senha errados.");

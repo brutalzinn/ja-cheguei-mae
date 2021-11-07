@@ -1,5 +1,4 @@
-﻿using api_ja_cheguei_mae.PostgreeSQL;
-using api_ja_cheguei_mae.Services;
+﻿using api_ja_cheguei_mae.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 namespace api_ja_cheguei_mae.Controllers
@@ -11,9 +10,9 @@ namespace api_ja_cheguei_mae.Controllers
     {
         private readonly IMensagemService _mensagemService;
 
-        private readonly DatabaseContexto _contexto;
+        private readonly MyDbContext _contexto;
 
-        public MensagemController(IMensagemService mensagemService, DatabaseContexto contexto)
+        public MensagemController(IMensagemService mensagemService, MyDbContext contexto)
         {
             _mensagemService = mensagemService;
             _contexto = contexto;
@@ -22,7 +21,7 @@ namespace api_ja_cheguei_mae.Controllers
         [HttpGet("/listarmensagem")]
         public IActionResult ListarMensagens()
         {
-            return Ok(_contexto.usuario.ToList());
+            return Ok(_contexto.Usuarios.ToList());
         }
         [HttpGet("/mensagem")]
 

@@ -1,6 +1,6 @@
 ﻿
+using api_ja_cheguei_mae;
 using api_ja_cheguei_mae.Middlewares;
-using api_ja_cheguei_mae.PostgreeSQL;
 using api_ja_cheguei_mae.Services;
 using api_ja_cheguei_mae.Services.JWTService;
 using api_ja_cheguei_mae.Services.LoginService;
@@ -52,7 +52,7 @@ public class Startup
             //});
             services.AddHttpContextAccessor();
          
-            services.AddDbContext<DatabaseContexto>(options => options.UseNpgsql(
+            services.AddDbContext<MyDbContext>(options =>options.UseNpgsql(
             Configuration.GetConnectionString("DefaultConnetion")));
             services.AddSingleton<IMensagemService, MensagemService>();
             services.AddSingleton<IJWTService, JWTService>();

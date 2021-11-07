@@ -1,5 +1,4 @@
 ﻿using api_ja_cheguei_mae.Exceptions;
-using api_ja_cheguei_mae.PostgreeSQL;
 using JWT;
 using JWT.Algorithms;
 using JWT.Exceptions;
@@ -21,12 +20,12 @@ namespace api_ja_cheguei_mae.Services.JWTService
 
         private const string secret = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
 
-        public string GerarToken(UsuarioModel usuario)
+        public string GerarToken(Usuario usuario)
         {
             var payload = new Dictionary<string, object>
             {
-                { "UserId", usuario.id },
-                { "UserEmail", usuario.email }
+                { "UserId", usuario.UsuarioId },
+                { "UserEmail", usuario.Email }
             };
             IJwtAlgorithm algorithm = new HMACSHA256Algorithm(); // symmetric
             IJsonSerializer serializer = new JsonNetSerializer();

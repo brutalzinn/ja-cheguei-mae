@@ -1,5 +1,4 @@
 ﻿using api_ja_cheguei_mae.Atributttes;
-using api_ja_cheguei_mae.PostgreeSQL;
 using api_ja_cheguei_mae.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -12,9 +11,9 @@ namespace api_ja_cheguei_mae.Controllers
     {
         private readonly IMensagemService _mensagemService;
 
-        private readonly DatabaseContexto _contexto;
+        private readonly MyDbContext _contexto;
 
-        public ContatoController(IMensagemService mensagemService, DatabaseContexto contexto)
+        public ContatoController(IMensagemService mensagemService, MyDbContext contexto)
         {
             _mensagemService = mensagemService;
             _contexto = contexto;
@@ -23,7 +22,7 @@ namespace api_ja_cheguei_mae.Controllers
         [HttpGet]
         public IActionResult ListarContato()
         {
-            return Ok(_contexto.contato.Where(v=> v.status && v.usuario_id == 1));
+            return Ok(_contexto.Contatos.Where(v=> v.Status));
         }
     }
 }
