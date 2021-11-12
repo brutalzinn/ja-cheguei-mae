@@ -367,8 +367,11 @@ FodyWeavers.xsd
 
 # ENV VARIABLES
 **.env*
-/.env
+
+contatos.json
+/profile
 .env
+
 /**sql*
 
 /**/*Properties
