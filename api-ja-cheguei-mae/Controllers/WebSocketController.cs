@@ -17,6 +17,12 @@ namespace api_ja_cheguei_mae.Controllers
     [Route("websocket")]
     public class WebSocketController : ControllerBase
     {
+        [HttpGet("teste")]
+        public async Task teste()
+        {
+            Ok("banana");
+        }
+
         [HttpGet("gps")]
         public async Task Get()
         {
