@@ -1,7 +1,8 @@
 version: '3'
+#modo debugger
 services:
     database:
-      container_name: pg_container_apimae
+      container_name: api-ja-cheguei-mae-postgres
       image: postgres
       restart: always
       networks:
@@ -13,7 +14,7 @@ services:
       ports:
         - "5432:5432"
     pgadmin:
-      container_name: pgadmin4_api_mae
+      container_name: api-ja-cheguei-mae-pgadmin
       image: dpage/pgadmin4
       networks:
         - default      
@@ -23,3 +24,20 @@ services:
         PGADMIN_DEFAULT_PASSWORD: root
       ports:
         - "5050:80"
+    redis-compose:
+      image: redis
+      container_name: redis
+      command: redis-server --requirepass SUASENHA --appendonly yes
+      hostname: redis
+      ports:
+        - "6379:6379"
+      volumes:
+        - .Redis:/var/lib/postgresql/data
+    web:
+      build: .
+      container_name: api-de-utilidades
+      command: sh -c "ln -snf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && echo America/Sao_Paulo > /etc/timezone && python start.py"
+      ports:
+        - 5000:5000
+      volumes:
+        - ./:/code

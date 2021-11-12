@@ -367,7 +367,8 @@ FodyWeavers.xsd
 
 # ENV VARIABLES
 **.env*
-
+/.env
+.env
 /**sql*
 
 /**/*Properties
