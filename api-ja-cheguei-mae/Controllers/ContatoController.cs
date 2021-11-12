@@ -24,5 +24,6 @@ namespace api_ja_cheguei_mae.Controllers
         {
             return Ok(_contexto.Contatos.Where(v=> v.Status));
         }
+
     }
 }

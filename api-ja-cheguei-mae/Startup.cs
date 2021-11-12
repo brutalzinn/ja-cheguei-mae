@@ -77,13 +77,13 @@ public class Startup
         app.UseWebSockets(webSocketOptions);
 
         app.UseMiddleware<ErrorHandlerMiddleware>();
-            app.UseRouting();
-            app.UseMiddleware<AuthMiddleware>();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+        app.UseRouting();
+        app.UseMiddleware<AuthMiddleware>();
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
 
 
     }

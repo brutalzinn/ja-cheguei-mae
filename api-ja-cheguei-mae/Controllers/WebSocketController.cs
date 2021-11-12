@@ -12,9 +12,12 @@ using System.Threading.Tasks;
 
 namespace api_ja_cheguei_mae.Controllers
 {
+    [ApiController]
+
+    [Route("websocket")]
     public class WebSocketController : ControllerBase
     {
-        [HttpGet("/ws")]
+        [HttpGet("gps")]
         public async Task Get()
         {
             if (HttpContext.WebSockets.IsWebSocketRequest)
