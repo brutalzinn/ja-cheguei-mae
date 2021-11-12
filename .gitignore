@@ -370,7 +370,7 @@ FodyWeavers.xsd
 
 contatos.json
 /profile
-.env
+/.env
 
 /**sql*
 
