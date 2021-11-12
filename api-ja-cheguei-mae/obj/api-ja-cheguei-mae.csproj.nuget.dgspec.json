@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rober\\source\\repos\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\api-ja-cheguei-mae.csproj": {}
+    "C:\\Users\\rober\\Desktop\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\api-ja-cheguei-mae.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rober\\source\\repos\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\api-ja-cheguei-mae.csproj": {
+    "C:\\Users\\rober\\Desktop\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\api-ja-cheguei-mae.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rober\\source\\repos\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\api-ja-cheguei-mae.csproj",
+        "projectUniqueName": "C:\\Users\\rober\\Desktop\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\api-ja-cheguei-mae.csproj",
         "projectName": "api-ja-cheguei-mae",
-        "projectPath": "C:\\Users\\rober\\source\\repos\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\api-ja-cheguei-mae.csproj",
+        "projectPath": "C:\\Users\\rober\\Desktop\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\api-ja-cheguei-mae.csproj",
         "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rober\\source\\repos\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\obj\\",
+        "outputPath": "C:\\Users\\rober\\Desktop\\api-ja-cheguei-mae\\api-ja-cheguei-mae\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

@@ -33,7 +33,7 @@ namespace api_ja_cheguei_mae.Controllers
             return Ok(_usuarioService.PegarPerfilLogado());
         }
         [HttpPost]
-        public IActionResult Login(LoginRequest body)
+        public IActionResult Login(Login body)
         {
             var usuario = _contexto.Usuarios.Where((v) => v.Email == body.email && v.Senha == body.senha).FirstOrDefault();
             if (usuario == null)

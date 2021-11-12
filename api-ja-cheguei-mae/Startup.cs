@@ -70,8 +70,13 @@ public class Startup
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Doc - Api Target Desafio v1"));
             }
         //app.Map("/user", UserMiddleware);
+        var webSocketOptions = new WebSocketOptions()
+        {
+            KeepAliveInterval = TimeSpan.FromSeconds(120),
+        };
+        app.UseWebSockets(webSocketOptions);
 
-            app.UseMiddleware<ErrorHandlerMiddleware>();
+        app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseRouting();
             app.UseMiddleware<AuthMiddleware>();
             app.UseAuthorization();
